@@ -69,7 +69,7 @@ const games = [
 
 export default function BigWins() {
   return (
-    <div className="flex flex-col gap-5 px-4 py-8 overflow-hidden">
+    <div className="flex flex-col gap-5 px-4 overflow-hidden">
       <div className="flex items-center gap-2">
         <span className="relative flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>

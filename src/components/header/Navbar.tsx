@@ -21,9 +21,9 @@ export default function Navbar() {
          className="md:w-full md:h-full sm:w-[200px] sm:h-[40px] w-[100px] h-[20px]"
         />
       </div>
-      <div className="text-[#0e161d] flex items-center gap-3 font-medium">
-        <button className="bg-[#1effd7] px-3 py-1.5 rounded-md">Sign In</button>
-        <button className="bg-[#fff964] px-3 py-1.5 rounded-md">Sign Up</button>
+      <div className="text-[#0e161d] sm:text-base text-sm flex items-center gap-3 font-medium">
+        <button className="bg-[#1effd7] sm:px-3 px-2 py-1.5 rounded-md">Sign In</button>
+        <button className="bg-[#fff964] sm:px-3 px-2 py-1.5 rounded-md">Sign Up</button>
         <Image 
          src="/images/box.png"
          alt="box"

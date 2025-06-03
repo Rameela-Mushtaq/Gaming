@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} antialiased`}
+        className={`${poppins.className} antialiased flex justify-center`}
       >
         <SidebarProvider>
          <div className="flex flex-col h-screen overflow-hidden max-w-[1900px]">
