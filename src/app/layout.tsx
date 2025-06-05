@@ -25,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} antialiased flex justify-center`}
+        className={`${poppins.className} antialiased`}
       >
         <SidebarProvider>
-         <div className="flex flex-col h-screen overflow-hidden max-w-[1900px]">
+         <div className="flex flex-col h-screen overflow-hidden">
            <Navbar />
           <div className="flex flex-1 overflow-hidden">
             <Sidebar />

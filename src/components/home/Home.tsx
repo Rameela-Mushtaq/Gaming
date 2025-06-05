@@ -40,7 +40,7 @@ const Home = () => {
       {/* top dashboard card */}
       <div className="flex bg-gradient-to-r from-[#945238] to-[#180d51] rounded-2xl sm:px-4 px-3  relative">
         <div className="relative w-[45%] sm:flex hidden">
-          <div className="absolute left-0 bottom-0 xl:pl-8 z-50">
+          <div className="absolute left-0 bottom-0 xl:pl-8">
             <Image
               src="/images/bunny.png"
               alt="bunny"
