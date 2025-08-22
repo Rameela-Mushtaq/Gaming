@@ -43,7 +43,7 @@ export default function Sidebar() {
           height={100}
           className="mt-4"
         />
-        <nav className="flex flex-col gap-2 py-8">
+        <nav className="flex flex-col gap-4 py-10">
           {menu.map((item, idx) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -51,7 +51,7 @@ export default function Sidebar() {
               <Link
                 key={idx}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-2.5 border-l-2 transition-all 
+                className={`flex items-center gap-4 px-4 py-2.5 border-l-2 transition-all 
                   ${
                     isActive
                       ? "text-red-500 border-red-500"
