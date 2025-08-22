@@ -11,7 +11,7 @@ const Home = () => {
   const { openSidebar } = useSidebar();
   return (
     <div className="flex flex-col">
-      <div className="flex justify-between md:justify-end items-center bg-[#040C15] px-3 py-6">
+      <div className="flex justify-between lg:justify-end items-center bg-[#040C15] px-3 py-6">
         <div className="flex items-center gap-4 lg:hidden">
           <Image src="/images/logo.png" alt="logo" width={100} height={80} />
           {/* Hamburger button */}
