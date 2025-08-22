@@ -1,62 +1,62 @@
 "use client";
+import { Calendar, Gamepad2, DollarSign } from "lucide-react";
 
-import { useState } from "react";
-import { useSidebar } from "@/context/SidebarContext";
-import { Menu } from "lucide-react";
-import Image from "next/image";
-import SignUp from "../auth/SignUp";
-import SignIn from "../auth/SignIn";
-
-
-export default function Navbar() {
-  const { openSidebar } = useSidebar();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoginModel, setIsLoginModel] = useState(false);
+const Navbar = () => {
+  const navItems = [
+    {
+      title: "COD PK (Under 12 Only)",
+      date: "30 Jun, 2025",
+      game: "Call Of Duty",
+      price: "Free",
+    },
+    {
+      title: "Counter Strike GO",
+      date: "30 Jun, 2025",
+      game: "Counter Strike GO",
+      price: "1000",
+    },
+    {
+      title: "COD PK (Under 12 Only)",
+      date: "30 Jun, 2025",
+      game: "Call Of Duty",
+      price: "Free",
+    },
+  ];
 
   return (
-    <>
-      <header className="bg-gradient-to-r from-[#04022a] to-[#1f276c] text-white w-full h-16 flex items-center justify-between border-b border-[#6f6f6f] px-4 md:px-6 relative gap-2">
-        <div className="flex items-center gap-2">
-          {/* Hamburger for mobile */}
-          <button className="md:hidden" onClick={openSidebar}>
-            <Menu size={24} />
-          </button>
-          <Image 
-            src="/images/logo1.png"
-            alt="box"
-            width={250}
-            height={80}
-            className="md:w-full md:h-full sm:w-[200px] sm:h-[40px] w-[100px] h-[20px]"
-          />
+    <div className="bg-[#17263A] text-white text-sm px-10 py-4 flex items-center justify-center gap-1 clip-navbar">
+      <div className="overflow-y-auto flex scrollbar-hide">
+        {navItems.map((item, idx) => (
+        <div
+          key={idx}
+          className="flex items-center space-x-3"
+        >
+          <span className="font-bold cursor-pointer hover:text-red-500 ml-4 whitespace-nowrap text-sm">
+            {item.title}
+          </span>
+          <div className="w-[1px] bg-[#90A7CB] h-4" />
+          <div className="flex items-center space-x-1 text-[#90A7CB] text-xs whitespace-nowrap">
+            <Calendar size={14} />
+            <span className="md:flex hidden mt-1 ">{item.date}</span>
+          </div>
+          <div className="w-[2px] bg-[#90A7CB] h-4" />
+          <div className="flex items-center space-x-1 text-[#90A7CB] whitespace-nowrap text-xs">
+            <Gamepad2 size={14} />
+            <span className="md:flex hidden mt-1 ">{item.game}</span>
+          </div>
+          <div className="w-[2px] bg-[#90A7CB] h-4" />
+          <div className="flex items-center space-x-1 text-[#90A7CB] whitespace-nowrap text-xs">
+            <DollarSign size={14} />
+            <span className="md:flex hidden mt-1 ">{item.price}</span>
+          </div>
+           {idx !== navItems.length - 1 && (
+              <div className="w-[2px] bg-white h-8 rotate-[30deg] mx-3" />
+            )}
         </div>
-
-        <div className="text-[#0e161d] sm:text-base text-sm flex items-center gap-3 font-medium">
-          <button
-            onClick={() => setIsLoginModel(true)}
-           className="bg-[#1effd7] sm:px-3 px-2 py-1.5 rounded-md cursor-pointer">
-            Sign In
-          </button>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-[#fff964] sm:px-3 px-2 py-1.5 rounded-md cursor-pointer"
-          >
-            Sign Up
-          </button>
-          <Image 
-            src="/images/box.png"
-            alt="box"
-            width={36}
-            height={36}
-            className="sm:flex hidden "
-          />
-        </div>
-      </header>
-
-      {/* Sign Up Modal */}
-      <SignUp isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Sign In Modal */}
-      <SignIn isOpen={isLoginModel} onClose={() => setIsLoginModel(false)} />  
-    </>
+      ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default Navbar;

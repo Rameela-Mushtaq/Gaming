@@ -1,57 +1,65 @@
 "use client";
-
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   X,
-  Dice5,
-  Gamepad2,
-  Star,
-  Sparkles,
-  Tv,
   Users,
   Trophy,
-  Table2,
-  Zap,
-  CircleDollarSign,
-  Flame,
-  Factory,
+  Home,
+  Network,
+  BarChart2,
+  Newspaper,
+  CreditCard,
+  Wallet,
 } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext";
 import Image from "next/image";
+import { MdStadium } from "react-icons/md";
 
 const menu = [
-  { label: "Casino", href: "/casino", icon: Dice5 },
-  { label: "Slots", href: "/casino", icon: Gamepad2 },
-  { label: "Popular Picks", href: "/casino", icon: Star },
-  { label: "Latest Release", href: "/casino", icon: Sparkles },
-  { label: "Live Casino", href: "/casino", icon: Tv },
-  { label: "Game Shows", href: "/casino", icon: Users },
-  { label: "Originals", href: "/casino", icon: Trophy },
-  { label: "Table Games", href: "/casino", icon: Table2 },
-  { label: "Instant Games", href: "/casino", icon: Zap },
-  { label: "Bingo", href: "/casino", icon: CircleDollarSign },
-  { label: "Popular", href: "/casino", icon: Flame },
-  { label: "Provider", href: "/casino", icon: Factory },
+  { name: "Home", href: "/home", icon: Home },
+  { name: "Tournaments", href: "/", icon: Trophy },
+  { name: "Teams", href: "/teams", icon: Users },
+  { name: "Leagues", href: "/leagues", icon: Network },
+  { name: "Leaderboard", href: "/leaderboard", icon: BarChart2 },
+  { name: "News", href: "/news", icon: Newspaper },
+  { name: "Arena", href: "/arena", icon: MdStadium },
+  { name: "Subscriptions", href: "/subscriptions", icon: CreditCard },
+  { name: "Wallet", href: "/wallet", icon: Wallet },
 ];
 
 export default function Sidebar() {
   const { isOpen, closeSidebar } = useSidebar();
+  const pathname = usePathname();
 
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="bg-gradient-to-b from-[#04022a] to-[#1f276c] border-r border-[#6f6f6f] text-white w-64 hidden md:block h-full overflow-y-auto scrollbar-hide">
-        <nav className="flex flex-col gap-2 py-8 px-2">
+      <aside className="bg-[#040C15] border-r border-gray-700 px-2 text-white lg:flex flex-col items-center w-64 hidden h-full overflow-y-auto scrollbar-hide">
+        <Image
+          src="/images/logo.png"
+          alt="logo"
+          width={180}
+          height={100}
+          className="mt-4"
+        />
+        <nav className="flex flex-col gap-2 py-8">
           {menu.map((item, idx) => {
             const Icon = item.icon;
+            const isActive = pathname === item.href;
             return (
               <Link
                 key={idx}
                 href={item.href}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#34faf9] hover:text-[#0e161d]"
+                className={`flex items-center gap-3 px-4 py-2.5 border-l-2 transition-all 
+                  ${
+                    isActive
+                      ? "text-red-500 border-red-500"
+                      : "border-transparent hover:text-red-500 hover:border-red-500"
+                  }`}
               >
-                <Icon size={20} />
-                <span>{item.label}</span>
+                <Icon size={20} className={isActive ? "text-red-500" : ""} />
+                <span>{item.name}</span>
               </Link>
             );
           })}
@@ -68,12 +76,12 @@ export default function Sidebar() {
 
       {/* Mobile Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-[#0a082d] text-white overflow-y-auto transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 bg-[#040C15] text-white overflow-y-auto transform transition-transform duration-300 lg:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex justify-between items-center p-4 border-b">
-          <Image src="/images/logo1.png" alt="box" width={100} height={20} />
+          <Image src="/images/logo.png" alt="logo" width={100} height={80} />
           <button onClick={closeSidebar}>
             <X size={24} />
           </button>
@@ -81,15 +89,21 @@ export default function Sidebar() {
         <nav className="flex flex-col gap-2 p-4">
           {menu.map((item, idx) => {
             const Icon = item.icon;
+            const isActive = pathname === item.href;
             return (
               <Link
                 key={idx}
                 href={item.href}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#34faf9] hover:text-[#0e161d]"
+                className={`flex items-center gap-3 px-4 py-2.5 border-l-4 transition-all 
+                  ${
+                    isActive
+                      ? "text-red-500 border-red-500"
+                      : "border-transparent hover:text-red-500 hover:border-red-500"
+                  }`}
                 onClick={closeSidebar}
               >
-                <Icon size={20} />
-                <span>{item.label}</span>
+                <Icon size={20} className={isActive ? "text-red-500" : ""} />
+                <span>{item.name}</span>
               </Link>
             );
           })}
